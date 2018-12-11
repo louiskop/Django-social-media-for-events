@@ -1,0 +1,34 @@
+
+
+align die pics in die cards op die homepage na center*
+
+
+Vra die vraag oor hoekom die utl maak 33/media/imgs/tollie.png en nnie die normamle url nie en hoekom dit differenciate van die home.html af op STack Overflow of n anne coding site om n fix te kry en gaan liewer aan met die ander features**
+
+kry die naise comments reg **
+
+favourites?***
+
+google maps api vir location ***
+
+partys near you ****
+
+invite list om sekere details te hide**
+maak 'n 'n invite generator wat mense kan copy* en daarlik daarna kan share ***
+
+    
+
+1.finish up all the features and apis in backend
+2.add leke forms and display them all
+    css forms
+3. add the right filters
+    deel van fearures
+4. css this bitch
+    hele site se animations
+5. kyk ofjy kan javascript(react leer as dit is wat jy wil doen... of leer net n hele ander tiepe prog soos devon )
+6. optimize site vir mobile users OF gebruik apache phonegap en maak dit 'n app ook
+    Foon layout soos PH
+
+
+7.SEO'se
+upload so vinnig as wat jy kan

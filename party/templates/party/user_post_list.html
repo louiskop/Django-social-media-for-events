@@ -1,0 +1,17 @@
+{% extends "party/home.html" %}
+
+{% block body_block %}
+
+<header class="containerss">
+    <h1>@{{post_user.username}}</h1>
+
+
+</header>
+     <h1 id='listhead'>Parties hosted</h1>
+
+    {% for party in kuierlist %}
+    <h2 id='listof'>{{party.title}}</h2>
+    {%endfor%}
+
+
+{% endblock body_block %}

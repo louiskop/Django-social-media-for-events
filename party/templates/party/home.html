@@ -1,0 +1,159 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet"> 
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">  -->
+    
+    <title>PARTY!</title>
+  </head>
+  
+  
+  <body>
+    
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #c50000;margin-bottom:0px;padding-bottom:0;" >
+            <a class="navbar-brand" style="color: beige" href="{% url "party:party" %}">KUIER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    {% if user.is_authenticated %}
+                    <a class="nav-item nav-link active" style="color: beige" href="{% url "party:aboutpage" %}">About<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" style="color: beige" href="{% url "party:newparty" %}">Create a party</a>
+                    <a class="nav-item nav-link" style="color: beige" href="#">Top charts</a>
+                    <a class="nav-item nav-link" style="color: beige" href="#">Events</a>
+                    <a class="nav-item nav-link navbar-right" style="color: beige" href="{% url "accounts:logout" %}">Log Out</a>
+                    {% else %}
+                    <a class="nav-item nav-link active" style="color: beige" href="{% url "party:aboutpage" %}">About<span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" style="color: beige" href="{% url "party:newparty" %}">Create a party</a>
+                    <a class="nav-item nav-link" style="color: beige" href="#">Top charts</a>
+                    <a class="nav-item nav-link" style="color: beige" href="#">Events</a>
+                    <a class="nav-item nav-link navbar-right" style="color: beige" href="{% url "accounts:login" %}">Log In</a>
+                    <a class="nav-item nav-link navbar-right" style="color: beige" href="{% url "accounts:signup" %}">Sign up</a>
+                    {% endif %}                
+            </div>
+        
+        </nav>
+    {% block body_block %}
+    <div id='backie' style='padding-top:5px;'>
+        <div class='header'>
+            <div class='header__text-box' id=headings>
+                <h1 class='heading-primary'>
+                    party central
+                </h1>
+                <h2 class='heading-secondary'>where parties come to life</h2>
+            </div>
+        </div>
+    </div> 
+    <br>
+    <br>
+    <div class='backie2'>
+            <div class="row justify-content-center" style="margin-top: 1%">
+                    <div class="col-12 col-md-10 col-lg-8">
+                        <form class="card card-sm">
+                            <div class="card-body row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <i class="fas fa-search h4 text-body"></i>
+                                </div>
+                                <div class="col">
+                                        <form class="form-inline">
+                                                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search' value='{{request.GET.search}}'>
+                                        </form>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-lg btn-success" style='background-color: red' type="submit">Search</button>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        <br>
+        <br>     
+        <div class="row">
+                <div class='col content-center' style="margin-left: 2%;margin-right:0;">
+                        <div class=jumbotron>
+                            <h2 id=headings>Filtering</h2>
+                            <br>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {% if request.GET.country %}
+                                    {{ request.GET.country}}
+                                    {% else %}
+                                    Select an country
+                                    {% endif %}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{% if 'search' in request.GET %}?country=SouthAfrica&search={{request.GET.search}}{% else %}?country=SouthAfrica{% endif %}">South Africa</a>
+                                        <a class="dropdown-item" href="{% if 'search' in request.GET %}?country=America&search={{request.GET.search}}{% else %}?country=America{% endif %}">America</a>
+                                        <a class="dropdown-item" href="{% if 'search' in request.GET %}?country=England&search={{request.GET.search}}{% else %}?country=England{% endif %}">England</a>
+                                        <a class="dropdown-item" href="{% if 'search' in request.GET %}?country=Russia&search={{request.GET.search}}{% else %}?country=Russia{% endif %}">Russia</a>
+                                        <a class="dropdown-item" href="{% if 'search' in request.GET %}?country=China&search={{request.GET.search}}{% else %}?country=China{% endif %}">China</a>
+                                    </div>
+                                </div>
+                            <br>
+                        </div>
+                </div>  
+                <div class='col'>
+                {% for party in kuierlist %}                                                                              <!--  17rem 50rem -->
+                    <div class="card" style="transform: translateX(-4rem);background-color:rgba(207, 203, 203, 0.733);width:100vh;height:34vh;margin-left: 10%;margin-bottom:7%;">
+                        <div class="row no-gutters">
+                            <div class="col-auto">
+                                <img src="{{ party.image.url }}" width="200" height="200" class="img-fluid" style='padding-top: 10%;padding-left: 10%;margin-top:7%;'>
+                            </div>
+                            <div class="col" style='margin-left:5%;margin-top:3%;'>
+                                <div class="card-block px-2">
+                                    <h4 class="card-title">{{ party.title }}</h4>
+                                    <p class="card-text">{{ party.date }}</p>
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text"></p>
+                                    <p class="card-text">{{ party.time }}-{{ party.timeend }}</p>
+                                    {% if party.drinks == True %}
+                                    <p class="card-text">There will be boooooze</p>
+                                    {% else %}
+                                    <p class="card-text">Age: {{ party.age }}</p>
+                                    {% endif %}
+                                    <a href="{% url 'party:partydetail' pk=party.pk%}" class="btn btn-primary btn-lg" role='button' style="background-color: red;">visit page</a>
+                                    <h5>
+                                        <span class='username'>
+                                            <a href="{% url 'party:for_user' username=party.user.username %}">@{{party.user.username}}</a>
+                                        </span>
+                                    </h5>
+                                </div>
+                            </div>
+
+                            <div class='col' >
+                                <div class='deleteandeditbutton'>
+                                    {% if user.is_authenticated and party.user == user %}
+                                    <a href="{% url 'party:delete' pk=party.pk%}" class="btn btn-primary btn-md" role='button'>Delete</a>
+                                    {% endif %}
+                                    <br>
+                                    {{party.color}}
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+
+                
+    
+                <div class='col content-center'>
+                    <h1>hallo julle eks n google ad</h1>
+                </div>
+        </div>        
+    </div>            
+    {% endblock %}
+
+    <script src="{% static "javascript/skrip.js"%}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+
+</html>

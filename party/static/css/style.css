@@ -1,0 +1,196 @@
+.containerss {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10rem;
+}
+
+#listof {
+    margin-left: 3rem;
+    font-family: 'Questrial', sans-serif;
+    margin-bottom: 3rem;
+}
+
+#listhead{
+    margin-left:1rem;
+    color: red;
+    letter-spacing:5px;
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+#backie {
+    background-image: url(../images/bgpic.jpg);
+    background-repeat: repeat;
+    /* padding-bottom: 3%; */
+    margin-bottom: 0;
+    border-bottom: solid 10px red;
+    height:10rem;
+    animation-name: smaller;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+#backie:hover {
+    animation-name: bigger;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+#backie2 {
+    background-color: whitesmoke;
+
+}
+
+
+#id_title{
+    align-self: auto;
+    width: 50rem;
+}
+
+#id_drinks{
+    margin-left: 0.5rem
+}
+
+#id_age{
+    width: 30rem
+}
+
+#id_date{
+    width: 30rem
+}
+
+#id_time{
+    width: 30rem
+}
+
+#id_timeend{
+    width: 30rem
+}
+
+#id_color{
+    width: 30rem
+}
+
+#id_image{
+    width: 30rem;
+    padding-bottom: 3rem;
+}
+
+#id_location{
+    width: 30rem
+}
+
+#id_keyword{
+    width: 30rem
+}
+
+#headings{
+    /* font-family: 'Roboto Slab', serif; */
+    font-family: 'Questrial', sans-serif;
+}
+
+#exback{
+    background-color: rgb(121,121,128);
+}
+
+#afterback{
+    background-color:#f7e5e5
+}
+
+#aboutskrif{
+    color: #eeeeee;
+    font-weight: bold;
+}
+
+/* .header{
+    height:10rem;
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    background-color: rgba(221, 0, 0, 0.76);
+} */
+
+
+.header__text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+
+}
+
+.heading-primary{
+    color: white;
+    letter-spacing: 1rem;
+}
+.heading-secondary{
+    color:white;
+}
+
+
+
+
+#backie:hover > .header{
+    height: 30rem;
+    /* background-image:  linear-gradient(to right bottom,#7ed56fc0,#28b485dc),url(../img/hero.jpg); */
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    background-color: rgba(221, 0, 0, 0.76);
+    clip-path:polygon(0 20vh,100% 6vh,100% 45vh, 0 60vh);
+    animation-name: rooinai;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}  
+
+.deleteandeditbutton a{
+    background-color: red;
+    position: absolute;
+    transform:translateY(10rem);
+}
+
+
+
+ 
+/* ANIMATION FUNCTIONS */
+
+
+@keyframes bigger {
+    0%{
+        height: 10rem;
+        background-size: 10rem;
+    }
+    
+    100%{
+        height: 30rem;
+        background-size: 30rem;
+    }
+
+}
+
+
+@keyframes smaller {
+    0%{
+        height: 30rem;
+    }
+    
+    100%{
+        height: 10rem;
+    }
+
+}
+
+@keyframes rooinai {
+    0%{
+        opacity:0;
+    }
+    50%{
+        opacity:0.2;
+    }
+    100%{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,65 @@
+{% extends "party/home.html" %}
+{% block body_block %}
+<div class='jumbotron'>
+<h1 id='headings'>Fill out to host your party!</h1>
+<br>
+<div class='container'>
+<p></p>
+<p></p>
+<div class='form-group'>
+<form method="POST" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.errors %}
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ form.errors }}
+      </div>
+    {%endif%}
+    <h2>General Details</h2>
+    <label id=headings for="title">Name</label>
+    {{form.title}}
+    <br>
+    <label id=headings for="thedate">Date</label>
+    {{form.date}}  
+    <br>
+    <label id=headings for="thelocation">Location</label>
+    {{form.location}}   
+    <br>
+    <label id=headings for="thecountry">Country</label>
+    {{form.color}}
+    <br>
+    <label id=headings for="thetime">Start Time</label>
+    {{form.time}}
+    <br>
+    <label id=headings for="thetimeend">End Time</label>
+    {{form.timeend}}
+    <br>
+    <br>
+    <h2>Drinksss</h2>
+    <label id=headings for="thecheckbox">Alcohol present</label>
+    {{form.drinks}}
+    <br>
+    <br>
+    <h2>Age</h2>
+    <label id=headings for="theage">Age limits</label>
+    {{form.age}}
+    <br>
+    <br>
+    <h2>Add an Image</h2>
+    {{form.image}}
+    <br>
+    <br>
+    <h2>Party keyword</h2>
+    <p>This feature will not be shown on your posted party, it is only to make searching for a spesific group or location of parties easy!</p>
+    <p>This can be any word you like, recommended are : group names, cities, type of parties...</p>
+    {{form.keyword}}
+    <br>
+    <br>
+    <button type="submit" style='background-color:red;color:white;'class="save btn btn-default">Save</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock %}

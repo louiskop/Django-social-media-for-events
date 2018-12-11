@@ -1,0 +1,50 @@
+{% extends 'party/home.html' %}
+{% block body_block %}
+<div class='jumbotron'>
+<div class='row'>
+<div class='md-col-6'>
+<h1>{{ details.title }}</h1>
+<br>
+<br>
+<h3 id=headings>DATE:  {{details.date}}</h3>
+<br>
+<h3 id=headings>TIME:  {{details.time}}-{{details.timeend}}</h3>
+<br>
+<h3 id=headings>AGE:  {{details.age}}</h3>
+<br>
+{% if details.drinks == True %}
+<h3 id=headings>There will be booze</h3>
+{% else %}
+<h3 id=headings>No ALCOHOL</h3>
+{% endif %}
+<br>
+</div>
+<div class='md-col-6'>
+    <img src="{{ details.image.url }}" width='500' height='500'>
+</div>
+</div>
+</div>
+
+
+
+
+<hr>
+<a class="btn btn-primary btn-comment" href="{% url 'party:add_comment_to_post' pk=details.pk %}">Add comment</a>
+
+<div class="container">
+
+
+{% for commenta in commentlist %}
+
+<br>
+
+            {{ commenta.created_date }}
+            <a class="btn btn-default" href="{% url 'party:comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        <p>{{ commenta.text|safe|linebreaks }}</p>
+        <p>Posted by: <strong>{{ commenta.author }}</strong></p>
+
+{% empty %}
+    <p>No comments posted.</p>
+{% endfor %}
+</div>
+{% endblock %}
